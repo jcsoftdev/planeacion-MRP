@@ -21,31 +21,29 @@
           Nivel
         </h2>
         <div class="form-group">
-          <label class="form__label" for="name">Nombre</label>
-          <input class="form__input" id="name" name="name" type="text">
+          <label class="form__label" for="name">Nombre/Codigo</label>
+          <input class="form__input" type="text">
+        </div>
+        <div class="form-group" style="display: none;">
+          <label class="form__label"for="quantity">Cantidad</label>
+          <input class="form__input"  disabled value="1" type="number">
         </div>
         <div class="form-group">
-          <label class="form__label" for="quantity">Cantidad</label>
-          <input class="form__input" id="quantity" name="quantity" type="text" value="hola">
-        </div>
-        <div class="form-group">
-
           <label class="form__label" for="ss">Stock de seguridad</label>
-
-          <input class="form__input" id="ss" name="ss" type="text">
-
+          <input class="form__input" type="number">
         </div>
         <div class="form-group">
           <label class="form__label" for="availability">Disponibilidad</label>
-          <input class="form__input" id="availability" name="availability" type="text">
+          <input class="form__input" type="number">
         </div>
         <div class="form-group">
-          <label class="form__label" for="ld">Lead Time</label>
-          <input class="form__input" id="ld" name="ld" type="text">
+          <label class="form__label" for="ld">Lead Time (Semanas)</label>
+          <input class="form__input" type="number">
         </div>
 
         <div class="btn-group">
-          <button id="btn-0-1" class="btn"> Crear Nivel Inferior </button>
+          <button id="btn-0-1"  class="btn"> validar datos </button>
+          <button style="display: none;" class="btn"> Crear Nivel Inferior </button>
         </div>
 
       </div>
@@ -58,27 +56,28 @@
       </div>
 
       <button class="btn">Tomar datos</button>
+      
     </div>
     <div id="table-container" class="table-container">
       <p>Necesidades brutas</p>
-      <table>
-        <thead>
-          <th>1</th>
-          <th>2</th>
-          <th>3</th>
-          <th>4</th>
-        </thead>
-        <tbody>
-          <tr>
-            <td> <input id="weeki1" class="form__input" type="text"> </td>
-            <td> <input id="weeki2" class="form__input" type="text"> </td>
-            <td> <input id="weeki3" class="form__input" type="text"> </td>
-            <td> <input id="weeki4" class="form__input" type="text"> </td>
-          </tr>
-        </tbody>
-      </table>
+      
+    </div>
+    <div class="members">
+      <h2>Integrantes</h2>
+      <ul>
+        <li>Aliaga Marin, Edwin Jais</li>
+        <li>López Balbin, Carlos</li>
+        <li>Suarez Torres, Dorcas Ruth</li>
+        <li>Valencia López, Juan Carlos</li>
+      </ul>
     </div>
     <div id="content">
+
+    </div>
+    <div class="btn-group btn-calcular">
+      <button id="calcular" onclick="calcular()" class="btn ">Calcular</button>
+    </div>
+    <div id="result">
 
     </div>
   </div>
