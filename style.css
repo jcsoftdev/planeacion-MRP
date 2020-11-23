@@ -46,7 +46,7 @@ h1 {
 .container {
   padding: 0 1.5rem;
   display: grid;
-  grid-template-areas: "getData getData member member" "table table table table" "level0 level0 level0 level0" "content content content content";
+  grid-template-areas: "getData getData getData getData" "table table table table" "level0 level0 level0 level0" "content content content content";
   column-gap: 30px;
   row-gap: 20px;
 }
@@ -62,21 +62,18 @@ h1 {
   justify-content: center;
   justify-self: center;
   align-self: center;
+      /* grid-column: 1/-1; */
 }
 .container > .table-container {
   grid-area: table;
-}
-.members {
-  grid-area: member;
-}
-.members ul li {
-  list-style-position: inside;
+  text-align: center;
 }
 
 @media (min-width: 992px) {
   .container {
-    grid-template-areas: "level0 getData getData getData" "level0 table table table" "level0 member member member" " content content content content";
+    grid-template-areas: "level0 getData getData getData" "level0 table table table" "level0 table table table" " content content content content";
   }
+  
 }
 .card {
   background: #fff;
@@ -90,6 +87,7 @@ h1 {
   justify-self: center;
   display: flex;
   align-items: center;
+
 }
 .get-data .form-group {
   position: relative;

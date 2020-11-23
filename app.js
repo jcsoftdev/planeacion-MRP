@@ -27,7 +27,7 @@ const generateTable = (n) => {
   for (let i = 1; i <= n; i++) {
     theadItems += `<th>${i}</th>`;
 
-    tds += `<td> <input id="week${i}" class="form__input" type="text"> </td>`;
+    tds += `<td> <input id="week${i}" class="form__input" type="number"> </td>`;
   }
   return `
       <p>Necesidades brutas</p>
@@ -414,7 +414,7 @@ const calcular = () => {
 
           for (let week = 0; week < NB.length; week++) {
             week + el.lt <= NB.length - 1
-              ? (table.EOP[week] = table.NN[week + el.lt])
+              ? (table.EOP[week] = el.cantidad*(table.NN[week + el.lt]))
               : (table.EOP[week] = 0);
           }
 
