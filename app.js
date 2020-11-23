@@ -104,8 +104,8 @@ const verifyData = (node) => {
   const values = getLevelValues(cardParent);
   // let error = [];
 
-  // if (values.name.length === 0) {
-  //   error.push('name')
+  if (values.name.length === 0) {
+     error.push('name')
   // } else if (values.quantity === 0) {
   //   error.push('cantidad')
   // } else if (values.ss === 0) {
@@ -115,17 +115,18 @@ const verifyData = (node) => {
   // } else if (values.ld === 0) {
   //   error.push('lead time')
   // } else {
-  // }
+
+  }
   node.parentNode.childNodes[5] &&
     node.parentNode.removeChild(node.parentNode.childNodes[5]);
-  // if (error.length) {
-  //   console.log(error)
-  //   let e = document.createElement("div");
-  //   e.innerHTML =
-  //     '<span style="display:block; color:red; margin-top:.75rem">Rellene los datos</span>';
-  //   !node.parentNode.childNodes[5] && node.parentNode.appendChild(e);
-  //   return null;
-  // }
+  if (error.length) {
+    //console.log(error)
+    let e = document.createElement("div");
+    e.innerHTML =
+     '<span style="display:block; color:red; margin-top:.75rem">Ingrese nombre</span>';
+     !node.parentNode.childNodes[5] && node.parentNode.appendChild(e);
+    return null;
+   }
   // node.parentNode.childNodes[3].removeAttribute('disabled')
 
   node.style.display = "none";
