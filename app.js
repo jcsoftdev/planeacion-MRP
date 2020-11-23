@@ -102,7 +102,7 @@ const verifyData = (node) => {
   // console.log("currentLevel", currentLevel, "currentCard", currentCard);
 
   const values = getLevelValues(cardParent);
-  // let error = [];
+  let error = [];
 
   if (values.name.length === 0) {
      error.push('name')
