@@ -185,8 +185,8 @@ const generateLevelCard = (level = 0, item, values) => {
           </div>
 
           <div class="btn-group">
-            <button id="${idBtn}" class="btn"> Validar datos </button>
-            <button style="display: none;" class="btn"> Crear Nivel Inferior </button>
+            <button id="${idBtn}" class="btn btn-secondary"> Validar datos </button>
+            <button style="display: none;" class="btn "> Crear Nivel Inferior </button>
           </div>
     `;
 
@@ -207,6 +207,7 @@ const generateLevelCard = (level = 0, item, values) => {
     console.log("error", error);
   }
 };
+const btnCalcular = document.getElementById("calcular");
 
 const handleClick = (node, isFirst = true) => {
   const data = verifyData(node);
@@ -217,13 +218,14 @@ const handleClick = (node, isFirst = true) => {
     node.parentNode.childNodes[3].addEventListener("click", (e) => {
       generateLevelCard(data.currentLevel, data.currentCard, data.values);
     });
+  data && (btnCalcular.style.display = "block");
 };
 
 const btnPrincipal = document.getElementById("btn-0-1");
-const btnCalcular = document.getElementById("calcular");
+
 btnPrincipal.addEventListener("click", (e) => {
   handleClick(btnPrincipal);
-  btnCalcular.style.display = "block";
+  
 });
 
 const getNB = (e) => {
@@ -368,7 +370,9 @@ const calcular = () => {
             table.SS[week] = el.ss;
             table.availability[week] > 0
               ? (table.NN[week] =
-                  table.NB[week] - table.availability[week] + table.SS[week])
+                  table.NB[week] - table.availability[week] + table.SS[week] > 0
+                    ? table.NB[week] - table.availability[week] + table.SS[week]
+                    : 0)
               : (table.NN[week] = table.NB[week]);
           }
 
@@ -389,12 +393,13 @@ const calcular = () => {
             NN: new Array(NB.length),
             EOP: new Array(NB.length),
           };
-          console.log("============>");
+          console.log("============>", el);
           table.name = el.name;
 
           tables.getData().forEach((t) => {
             if (t.name === el.parent) {
-              table.NB = t.EOP;
+              console.log(t.EOP * el.quantity);
+              table.NB = t.EOP.map((eop) => eop * el.quantity);
             }
           });
 
@@ -408,13 +413,15 @@ const calcular = () => {
             table.SS[week] = el.ss;
             table.availability[week] > 0
               ? (table.NN[week] =
-                  table.NB[week] - table.availability[week] + table.SS[week])
+                  table.NB[week] - table.availability[week] + table.SS[week] > 0
+                    ? table.NB[week] - table.availability[week] + table.SS[week]
+                    : 0)
               : (table.NN[week] = table.NB[week]);
           }
 
           for (let week = 0; week < NB.length; week++) {
             week + el.lt <= NB.length - 1
-              ? (table.EOP[week] = el.cantidad*(table.NN[week + el.lt]))
+              ? (table.EOP[week] = el.quantity * table.NN[week + el.lt])
               : (table.EOP[week] = 0);
           }
 

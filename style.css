@@ -67,8 +67,15 @@ h1 {
 .container > .table-container {
   grid-area: table;
   text-align: center;
+  
 }
-
+.table-container p {
+  font-size: 1.3rem;
+  
+}
+.table-container > table {
+  width: 100%;
+}
 @media (min-width: 992px) {
   .container {
     grid-template-areas: "level0 getData getData getData" "level0 table table table" "level0 table table table" " content content content content";
@@ -163,7 +170,14 @@ h1 {
 .btn:hover {
   background-color: rgba(104, 48, 195, 1);
 }
-
+.btn-secondary {
+  background-color:rgb(6, 190, 129,.85);
+  color: rgba(104, 48, 195, 1);
+  color: #fff;
+}
+.btn-secondary:hover {
+  background-color: rgb(6, 190, 129);
+}
 .btn:disabled,
 .btn[disabled] {
   border: 1px solidrgba(104, 48, 195, 1);
