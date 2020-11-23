@@ -25,9 +25,9 @@ const generateTable = (n) => {
   let theadItems = ``;
   let tds = ``;
   for (let i = 1; i <= n; i++) {
-    theadItems += `<th>${i}</th>`;
+    theadItems += `<th>Sem-${i}</th>`;
 
-    tds += `<td> <input id="week${i}" class="form__input" type="number"> </td>`;
+    tds += `<td> <input id="week${i}"  class="form__input" type="number"> </td>`;
   }
   return `
       <p>Necesidades brutas</p>
@@ -102,30 +102,30 @@ const verifyData = (node) => {
   // console.log("currentLevel", currentLevel, "currentCard", currentCard);
 
   const values = getLevelValues(cardParent);
-  let error = false;
+  // let error = [];
 
-  if (values.name.length === 0) {
-    error = true;
-  } else if (values.quantity === 0) {
-    error = true;
-  } else if (values.ss === 0) {
-    error = true;
-  } else if (values.availability === 0) {
-    error = true;
-  } else if (values.ld === 0) {
-    error = true;
-  } else {
-    error = false;
-    node.parentNode.childNodes[5] &&
-      node.parentNode.removeChild(node.parentNode.childNodes[5]);
-  }
-  if (error) {
-    let e = document.createElement("div");
-    e.innerHTML =
-      '<span style="display:block; color:red; margin-top:.75rem">Rellene los datos</span>';
-    !node.parentNode.childNodes[5] && node.parentNode.appendChild(e);
-    return null;
-  }
+  // if (values.name.length === 0) {
+  //   error.push('name')
+  // } else if (values.quantity === 0) {
+  //   error.push('cantidad')
+  // } else if (values.ss === 0) {
+  //   error.push('stock')
+  // } else if (values.availability === 0) {
+  //   error.push('disponibilidad')
+  // } else if (values.ld === 0) {
+  //   error.push('lead time')
+  // } else {
+  // }
+  node.parentNode.childNodes[5] &&
+    node.parentNode.removeChild(node.parentNode.childNodes[5]);
+  // if (error.length) {
+  //   console.log(error)
+  //   let e = document.createElement("div");
+  //   e.innerHTML =
+  //     '<span style="display:block; color:red; margin-top:.75rem">Rellene los datos</span>';
+  //   !node.parentNode.childNodes[5] && node.parentNode.appendChild(e);
+  //   return null;
+  // }
   // node.parentNode.childNodes[3].removeAttribute('disabled')
 
   node.style.display = "none";
@@ -169,19 +169,19 @@ const generateLevelCard = (level = 0, item, values) => {
           </div>
           <div class="form-group">
             <label class="form__label" for="quantity">Cantidad</label>
-            <input class="form__input"  type="number">
+            <input class="form__input" placeholder="0"  type="number">
           </div>
           <div class="form-group">
             <label class="form__label" for="ss">Stock de seguridad</label>
-            <input class="form__input" type="number">
+            <input class="form__input" placeholder="0" type="number">
           </div>
           <div class="form-group">
             <label class="form__label" for="availability">Disponibilidad</label>
-            <input class="form__input" type="number">
+            <input class="form__input" placeholder="0" type="number">
           </div>
           <div class="form-group">
             <label class="form__label" for="ld">Lead Time (Semanas)</label>
-            <input class="form__input"  type="number">
+            <input class="form__input" placeholder="0"  type="number">
           </div>
 
           <div class="btn-group">
@@ -225,7 +225,6 @@ const btnPrincipal = document.getElementById("btn-0-1");
 
 btnPrincipal.addEventListener("click", (e) => {
   handleClick(btnPrincipal);
-  
 });
 
 const getNB = (e) => {
@@ -398,8 +397,11 @@ const calcular = () => {
 
           tables.getData().forEach((t) => {
             if (t.name === el.parent) {
-              console.log(t.EOP * el.quantity);
-              table.NB = t.EOP.map((eop) => eop * el.quantity);
+              // console.log(t.EOP * el.quantity);
+              console.log(t)
+              const {EOP} = t;
+            
+              table.NB = EOP.map((eop) => eop * el.quantity);
             }
           });
 
@@ -421,7 +423,7 @@ const calcular = () => {
 
           for (let week = 0; week < NB.length; week++) {
             week + el.lt <= NB.length - 1
-              ? (table.EOP[week] = el.quantity * table.NN[week + el.lt])
+              ? (table.EOP[week] = table.NN[week + el.lt])
               : (table.EOP[week] = 0);
           }
 
