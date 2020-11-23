@@ -114,11 +114,12 @@ const verifyData = (node) => {
   //   error.push('disponibilidad')
   // } else if (values.ld === 0) {
   //   error.push('lead time')
-  // } else {
+  } else {
 
-  }
+  
   node.parentNode.childNodes[5] &&
     node.parentNode.removeChild(node.parentNode.childNodes[5]);
+}
   if (error.length) {
     //console.log(error)
     let e = document.createElement("div");
