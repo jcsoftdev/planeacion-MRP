@@ -171,14 +171,14 @@ h1 {
   background-color: rgba(104, 48, 195, 1);
 }
 .btn-secondary {
-  background-color: #dc2ade;
+  background-color: rgba(219, 42, 222, 0.9);
   /* background-color: #27d8f4;
   background-color: #F8C631; */
   color: rgba(104, 48, 195, 1);
   color: #fff;
 }
 .btn-secondary:hover {
-  background-color: rgb(6, 190, 129);
+  background-color: #dc2ade;
 }
 .btn:disabled,
 .btn[disabled] {
